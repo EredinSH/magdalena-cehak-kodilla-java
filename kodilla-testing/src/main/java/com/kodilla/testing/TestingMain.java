@@ -6,15 +6,22 @@ public class TestingMain {
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
 
-        int result;
+        int resultAdd = calculator.add(40,27);
 
-        result = calculator.add(40,25);
+        if(resultAdd > 0) {
+            System.out.println("Kalkulator dodaje poprawnie");
+        } else  {
+            System.out.println("Kalkulator jest wadliwy");
+        }
 
-        System.out.println(result);
+        int resultSubstract = calculator.substract(60,44);
 
-        result = calculator.substract(60,37);
+        if(resultSubstract < 60) {
+            System.out.println("Kalkulator odejmuje poprawnie");
+        } else  {
+            System.out.println("Kalkulator jest wadliwy");
+        }
 
-        System.out.println(result);
     }
 }
 

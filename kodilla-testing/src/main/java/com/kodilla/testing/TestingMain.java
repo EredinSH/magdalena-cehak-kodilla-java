@@ -8,7 +8,7 @@ public class TestingMain {
 
         int resultAdd = calculator.add(40,27);
 
-        if(resultAdd > 0) {
+        if(resultAdd == 67) {
             System.out.println("Kalkulator dodaje poprawnie");
         } else  {
             System.out.println("Kalkulator jest wadliwy");
@@ -16,7 +16,7 @@ public class TestingMain {
 
         int resultSubstract = calculator.substract(60,44);
 
-        if(resultSubstract < 60) {
+        if(resultSubstract == 16) {
             System.out.println("Kalkulator odejmuje poprawnie");
         } else  {
             System.out.println("Kalkulator jest wadliwy");

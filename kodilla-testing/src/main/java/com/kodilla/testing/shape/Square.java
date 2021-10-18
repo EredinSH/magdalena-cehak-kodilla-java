@@ -3,27 +3,28 @@ package com.kodilla.testing.shape;
 public class Square {
     double a;
     String figureName = "Square";
-    double field;
+    double figureField;
 
-    public double squareField(double a) {
-        field = a * a;
-        return field;
+    public String getShapeName() {
+        return figureName;
     }
 
-    public Square(double a) {
-        this.a = a;
+    public double getField() {
+        figureField = a * a;
+        return figureField;
+    }
+
+    public Square(String figureName, double figureField) {
+        this.figureName = figureName;
+        this.figureField = figureField;
     }
 
     public String getFigureName() {
         return figureName;
     }
 
-    public double getField() {
-        return field;
-    }
-
-    public double getA() {
-        return a;
+    public double getFigureField() {
+        return figureField;
     }
 
     @Override
@@ -33,12 +34,17 @@ public class Square {
 
         Square square = (Square) o;
 
-        return Double.compare(square.a, a) == 0;
+        if (Double.compare(square.figureField, figureField) != 0) return false;
+        return figureName.equals(square.figureName);
     }
 
     @Override
     public int hashCode() {
-        long temp = Double.doubleToLongBits(a);
-        return (int) (temp ^ (temp >>> 32));
+        int result;
+        long temp;
+        result = figureName.hashCode();
+        temp = Double.doubleToLongBits(figureField);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 }

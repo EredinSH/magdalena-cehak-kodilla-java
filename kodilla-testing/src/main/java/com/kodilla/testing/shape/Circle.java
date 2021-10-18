@@ -5,28 +5,28 @@ public class Circle {
     double pi = 3.14;
     double r;
     String figureName = "Circle";
-    double field;
+    double figureField;
 
-    public double circleField(double pi, double r) {
-        field = pi * r * r;
-        return field;
+    public String getShapeName() {
+        return figureName;
     }
 
-    public Circle(double pi, double r) {
-        this.pi = pi;
-        this.r = r;
+    public double getField() {
+        figureField = pi * r * r;
+        return figureField;
+    }
+
+    public Circle(String figureName, double figureField) {
+        this.figureName = figureName;
+        this.figureField = figureField;
     }
 
     public String getFigureName() {
         return figureName;
     }
 
-    public double getField() {
-        return field;
-    }
-
-    public double getR() {
-        return r;
+    public double getFigureField() {
+        return figureField;
     }
 
     @Override
@@ -36,17 +36,16 @@ public class Circle {
 
         Circle circle = (Circle) o;
 
-        if (Double.compare(circle.pi, pi) != 0) return false;
-        return Double.compare(circle.r, r) == 0;
+        if (Double.compare(circle.figureField, figureField) != 0) return false;
+        return figureName.equals(circle.figureName);
     }
 
     @Override
     public int hashCode() {
         int result;
         long temp;
-        temp = Double.doubleToLongBits(pi);
-        result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(r);
+        result = figureName.hashCode();
+        temp = Double.doubleToLongBits(figureField);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }

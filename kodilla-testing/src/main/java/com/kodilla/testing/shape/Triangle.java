@@ -5,32 +5,28 @@ public class Triangle {
     double tA;
     double h;
     String figureName = "Triangle";
-    double field;
+    double figureField;
 
-    public <h, tA> double triangleField(double tA, double h) {
-        field = (tA/2) * h;
-        return field;
+    public String getShapeName() {
+        return figureName;
     }
 
-    public Triangle(double tA, double h) {
-        this.tA = tA;
-        this.h = h;
+    public double getField() {
+        figureField = (tA /2) * h;
+        return figureField;
+    }
+
+    public Triangle(String figureName, double figureField) {
+        this.figureName = figureName;
+        this.figureField = figureField;
     }
 
     public String getFigureName() {
         return figureName;
     }
 
-    public double getField() {
-        return field;
-    }
-
-    public double gettA() {
-        return tA;
-    }
-
-    public double getH() {
-        return h;
+    public double getFigureField() {
+        return figureField;
     }
 
     @Override
@@ -40,17 +36,16 @@ public class Triangle {
 
         Triangle triangle = (Triangle) o;
 
-        if (Double.compare(triangle.tA, tA) != 0) return false;
-        return Double.compare(triangle.h, h) == 0;
+        if (Double.compare(triangle.figureField, figureField) != 0) return false;
+        return figureName.equals(triangle.figureName);
     }
 
     @Override
     public int hashCode() {
         int result;
         long temp;
-        temp = Double.doubleToLongBits(tA);
-        result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(h);
+        result = figureName.hashCode();
+        temp = Double.doubleToLongBits(figureField);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }

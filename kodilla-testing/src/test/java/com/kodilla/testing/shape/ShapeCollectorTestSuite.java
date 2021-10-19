@@ -27,55 +27,67 @@ public class ShapeCollectorTestSuite {
         System.out.println("Preparing to execute test #" + testCounter);
     }
 
-    @Test
-    void testAddFigure() {
-        //Given
-        ArrayList<Shape> shapes = new ArrayList<>();
-        ShapeCollector shapeCollector = new ShapeCollector();
-        Triangle newTriangle = new Triangle("Triangle", 40.5);
+    @Nested
+    @DisplayName("Testy dodające figury")
+    class testAdd {
+        @Test
+        void testAddFigure() {
+            //Given
+            ArrayList<Shape> shapes = new ArrayList<>();
+            ShapeCollector shapeCollector = new ShapeCollector();
+            Triangle newTriangle = new Triangle("Triangle", 40.5);
 
-        //When
-        shapeCollector.addFigure(newTriangle);
+            //When
+            shapeCollector.addFigure(newTriangle);
 
-        //Then
-        Assertions.assertEquals(1, shapes.size());
+            //Then
+            Assertions.assertEquals(1, shapeCollector.getShapes().size());
 
 
+        }
     }
 
-    @Test
-    void testRemoveFigure() {
-        //Given
-        ArrayList<Shape> shapes = new ArrayList<>();
-        ShapeCollector shapeCollector = new ShapeCollector();
-        Triangle newTriangle = new Triangle("Triangle", 40.5);
-        shapeCollector.addFigure(newTriangle);
+    @Nested
+    @DisplayName("Testy usuwające figury figury")
+    class testRemove {
+        @Test
+        void testRemoveFigure() {
+            //Given
+            ArrayList<Shape> shapes = new ArrayList<>();
+            ShapeCollector shapeCollector = new ShapeCollector();
+            Triangle newTriangle = new Triangle("Triangle", 40.5);
+            shapeCollector.addFigure(newTriangle);
 
-        //When
-        boolean result = shapeCollector.removeFigure(newTriangle);
+            //When
+            boolean result = shapeCollector.removeFigure(newTriangle);
 
-        //Then
-        Assertions.assertTrue(result);
-        Assertions.assertEquals(0, shapes.size());
+            //Then
+            Assertions.assertTrue(result);
+            Assertions.assertEquals(0, shapes.size());
 
 
+        }
     }
 
-    @Test
-    void testGetFigure() {
-        //Given
-        ArrayList<Shape> shapes = new ArrayList<>();
-        ShapeCollector shapeCollector = new ShapeCollector();
-        Triangle newTriangle = new Triangle("Triangle", 40.5);
-        shapeCollector.addFigure(newTriangle);
+    @Nested
+    @DisplayName("Testy pobierające figury z kolekcji")
+    class testGet {
+        @Test
+        void testGetFigure() {
+            //Given
+            ArrayList<Shape> shapes = new ArrayList<>();
+            ShapeCollector shapeCollector = new ShapeCollector();
+            Triangle newTriangle = new Triangle("Triangle", 40.5);
+            shapeCollector.addFigure(newTriangle);
 
-        //When
-        Shape retrievedShape;
-        retrievedShape = shapeCollector.getFigure(0);
+            //When
+            Shape retrievedShape;
+            retrievedShape = shapeCollector.getFigure(0);
 
-        //Then
-        Assertions.assertEquals(newTriangle, retrievedShape);
+            //Then
+            Assertions.assertEquals(newTriangle, retrievedShape);
 
+        }
     }
 
 

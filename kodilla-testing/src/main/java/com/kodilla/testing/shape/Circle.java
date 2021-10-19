@@ -1,6 +1,6 @@
 package com.kodilla.testing.shape;
 
-public class Circle {
+public class Circle implements Shape {
 
     double pi = 3.14;
     double r;
@@ -8,6 +8,7 @@ public class Circle {
     double figureField;
 
     public String getShapeName() {
+
         return figureName;
     }
 

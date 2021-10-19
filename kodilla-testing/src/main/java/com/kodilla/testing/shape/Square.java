@@ -1,6 +1,6 @@
 package com.kodilla.testing.shape;
 
-public class Square {
+public class Square implements Shape {
     double a;
     String figureName = "Square";
     double figureField;

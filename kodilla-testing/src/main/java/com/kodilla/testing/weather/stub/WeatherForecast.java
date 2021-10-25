@@ -41,19 +41,17 @@ public class WeatherForecast {
 
         for(Map.Entry<String, Double> mapSum : temperatures.getTemperatures().entrySet()) {
             sortList.add(mapSum.getValue());
-            Collections.sort(List<Double> sortList);
         }
-
-        temperatures.getTemperatures().entrySet();
+        Collections.sort(sortList);
 
         double median;
-        int size = temperatures.getTemperatures().size();
+        int size = sortList.size();
 
         if(size%2 == 0) {
-            median = (temperatures.getTemperatures().get(temperatures.getTemperatures().size()/2) + temperatures.getTemperatures().get((temperatures.getTemperatures().size()/2) -1))/2;
+            median = (sortList.get(sortList.size()/2) + sortList.get((sortList.size()/2) -1))/2;
 
         } else {
-            median = (temperatures.getTemperatures().get(temperatures.getTemperatures().size()/2 + 1));
+            median = sortList.get(sortList.size()/2);
         }
 
         return median;

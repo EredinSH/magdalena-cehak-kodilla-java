@@ -8,10 +8,10 @@ public class WeatherForecast {
     private Temperatures temperatures;
 
     public WeatherForecast(Temperatures temperatures) {
+
         this.temperatures = temperatures;
     }
 
-    Map<String, Double> resultMap = new HashMap<>();
 
     public Map<String, Double> calculateForecast() {
         Map<String, Double> resultMap = new HashMap<>();
@@ -29,12 +29,11 @@ public class WeatherForecast {
     public double getAverage() {
         double sum = 0;
         double average = 0;
-        for(Map.Entry<String, Double> mapSum : resultMap.entrySet()) {
+        for(Map.Entry<String, Double> mapSum : temperatures.getTemperatures().entrySet()) {
             sum += mapSum.getValue();
-
         }
 
-        average = sum / resultMap.size();
+        average = sum / temperatures.getTemperatures().size();
         return average;
 
     }
@@ -42,13 +41,13 @@ public class WeatherForecast {
     public double getMedian() {
 
         double median;
-        int size = resultMap.size();
+        int size = temperatures.getTemperatures().size();
 
         if(size%2 == 0) {
-            median = (resultMap.get(resultMap.size()/2) + resultMap.get((resultMap.size()/2) -1))/2;
+            median = (temperatures.getTemperatures().get(temperatures.getTemperatures().size()/2) + temperatures.getTemperatures().get((temperatures.getTemperatures().size()/2) -1))/2;
 
         } else {
-            median = resultMap.get(resultMap.size()/2);
+            median = temperatures.getTemperatures().size()/2;
         }
 
         return median;

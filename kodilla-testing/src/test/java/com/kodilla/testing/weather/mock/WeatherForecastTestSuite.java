@@ -34,7 +34,6 @@ public class WeatherForecastTestSuite {
     @Test
     void testCalculateForecastWithMock() {
         //Given
-        Map<String, Double> temperaturesMap = new HashMap<>();
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
         //When
@@ -47,10 +46,11 @@ public class WeatherForecastTestSuite {
     @Test
     void testGetAverage() {
         //Given
-        Map<String, Double> temperaturesMap = new HashMap<>();
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+        weatherForecast.calculateForecast();
 
         //When
+
         double result = weatherForecast.getAverage();
 
         //Then
@@ -61,15 +61,14 @@ public class WeatherForecastTestSuite {
     @Test
     void testGetMedian() {
         //Given
-        Map<String, Double> temperaturesMap = new HashMap<>();
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
+        weatherForecast.calculateForecast();
 
         //When
         double result = weatherForecast.getMedian();
 
         //Then
         Assertions.assertEquals(24.8, result);
-
 
     }
 }

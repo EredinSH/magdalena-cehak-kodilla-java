@@ -6,8 +6,11 @@ import com.kodilla.stream.iterate.NumbersGenerator;
 public class StreamMain {
 
     public static void main(String[] args) {
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        poemBeautifier.beautify("Litwo, ojczyzno moja!",(text) -> text + " Ty jestes jak zdrowie.");
+        poemBeautifier.beautify("Litwo, ojczyzno moja!",(text) -> text + " Adam Miciewicz");
+        poemBeautifier.beautify("Litwo, ojczyzno moja!",(text) -> "~~<3 " + text + " <3~~");
+        poemBeautifier.beautify("Litwo, ojczyzno moja!",(text) -> text.toUpperCase());
 
     }
 

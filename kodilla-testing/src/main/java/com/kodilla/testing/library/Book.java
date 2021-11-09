@@ -1,9 +1,11 @@
 package com.kodilla.testing.library;
 
+import java.util.Objects;
+
 public class Book {
-    String title;
-    String author;
-    int publicationYear;
+    private String title;
+    private String author;
+    private int publicationYear;
 
     public Book(String title, String author, int publicationYear) {
         this.title = title;
@@ -39,19 +41,14 @@ public class Book {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Book book = (Book) o;
-
-        if (publicationYear != book.publicationYear) return false;
-        if (!title.equals(book.title)) return false;
-        return author.equals(book.author);
+        return publicationYear == book.publicationYear &&
+                Objects.equals(title, book.title) &&
+                Objects.equals(author, book.author);
     }
 
     @Override
     public int hashCode() {
-        int result = title.hashCode();
-        result = 31 * result + author.hashCode();
-        result = 31 * result + publicationYear;
-        return result;
+        return Objects.hash(title, author, publicationYear);
     }
 }

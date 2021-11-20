@@ -3,6 +3,8 @@ package com.kodilla.stream.portfolio;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -156,13 +158,12 @@ public class BoardTestSuite {
                 .filter(taskInProgress::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(Task::getCreated)
-                .filter(d -> d.compareTo(LocalDate.now().minusDays(0)) >= 0)
-                .mapToInt()
+                .mapToDouble(task -> ChronoUnit.DAYS.between(LocalDate.of(2021, 11, 01),LocalDate.of(2021, 11, 20)))
                 .average()
                 .getAsDouble();
 
         //THEN
-        assertEquals(12.5,average,0.001);
+        assertEquals(19.0,average,0.001);
     }
 
 }

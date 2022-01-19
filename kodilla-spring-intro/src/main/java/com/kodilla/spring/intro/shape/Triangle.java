@@ -7,5 +7,5 @@ public class Triangle implements Shape {
         System.out.println("This is a triangle");
         return "This is a triangle";
     }
-
 }
+

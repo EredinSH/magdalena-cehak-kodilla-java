@@ -18,19 +18,19 @@ public class BoardConfig {
     @Qualifier
     TaskList taskList;
 
-    @Bean
+    @Bean(name = "toDoList")
     public TaskList getToDoList() {
 
         return new TaskList();
     }
 
-    @Bean
+    @Bean(name = "inProgressList")
     public TaskList getInProgressList() {
 
         return new TaskList();
     }
 
-    @Bean
+    @Bean(name = "doneList")
     public TaskList getDoneList() {
 
         return new TaskList();

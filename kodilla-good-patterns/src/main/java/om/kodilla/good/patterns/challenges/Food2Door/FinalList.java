@@ -12,10 +12,11 @@ public class FinalList {
         Warehouse warehouse = new Warehouse();
 
         for(Warehouse products : warehouse.stockLevels()) {
-            if (warehouse.isAvailability() == true) {
+            if (products.isAvailability() == true) {
                 finalListOfProducts.add(warehouse);
             }
         }
+        System.out.println(finalListOfProducts);
         return finalListOfProducts;
     }
 

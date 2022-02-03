@@ -1,0 +1,17 @@
+{
+
+    "carName":"Renegade"
+    "carBrand":"Jeep"
+    "carSeats":[
+        "material":"leather",
+        "colour":"black",
+        "material":"upholstery",
+        "colour":"red",
+        "material":"suede",
+        "colour":"grey",
+        "material":"eco leather",
+        "colour":"brown",
+        ]
+    "engineCapacity":1.6
+
+}

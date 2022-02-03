@@ -52,7 +52,7 @@ public class Product {
         return items;
     }
 
-    public void setItem(Item item) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 }

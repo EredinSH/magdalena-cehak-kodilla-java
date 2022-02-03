@@ -6,6 +6,19 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.nameFragment",
+                query = "SELECT * FROM companies WHERE NAME LIKE CONCAT(:NAME,'%')",
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Companies.fullName",
+                query = "SELECT * FROM companies WHERE NAME LIKE CONCAT('%',:NAME,'%')",
+                resultClass = Company.class
+        )
+})
+
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

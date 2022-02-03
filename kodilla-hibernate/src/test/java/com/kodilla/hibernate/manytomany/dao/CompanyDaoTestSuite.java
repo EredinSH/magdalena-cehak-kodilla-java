@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
@@ -13,6 +16,9 @@ class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -58,5 +64,43 @@ class CompanyDaoTestSuite {
         //} catch (Exception e) {
         //    //do nothing
         //}
+    }
+
+    @Test
+    void testNewQueries() {
+
+        //GIVEN
+        Employee employee1 = new Employee("Jim", "Halpert");
+        Employee employee2 = new Employee("Pam", "Beesly");
+        Employee employee3 = new Employee("Dwight", "Shrute");
+
+        Company company1 = new Company("Dunder Muffin");
+        Company company2 = new Company("Michael Scott Paper Company");
+
+        company1.getEmployees().add(employee1);
+        company1.getEmployees().add(employee2);
+        company1.getEmployees().add(employee3);
+        company2.getEmployees().add(employee2);
+
+        employee1.getCompanies().add(company1);
+        employee2.getCompanies().add(company1);
+        employee2.getCompanies().add(company2);
+        employee3.getCompanies().add(company1);
+
+        //WHEN
+        companyDao.save(company1);
+        companyDao.save(company2);
+        List<Employee> listOfEmployees = employeeDao.findByLastname("Halpert");
+        List<Company> listOfCompanies = companyDao.nameFragment("Dun");
+
+        //THEN
+        try {
+            assertEquals(1, listOfEmployees.size());
+            assertEquals(1, listOfCompanies.size());
+        } finally {
+            //CLEANUP
+            employeeDao.deleteAll();
+            companyDao.deleteAll();
+        }
     }
 }

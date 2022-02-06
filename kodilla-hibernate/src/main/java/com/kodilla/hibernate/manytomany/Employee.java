@@ -9,10 +9,10 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(
                 name = "Employee.findByLastname",
-                query = "FROM Employee WHERE lastname = :LASTNAME "
+                query = "FROM Employee WHERE lastname = :LASTNAME"
         ),
         @NamedQuery(
-                name = "Emplyee.proposedLastname",
+                name = "Employee.proposedLastname",
                 query = "FROM Employee Where lastname = :LASTNAME"
         )
 })

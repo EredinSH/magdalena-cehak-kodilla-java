@@ -9,7 +9,7 @@ import java.util.List;
 @NamedNativeQueries({
         @NamedNativeQuery(
                 name = "Company.nameFragment",
-                query = "SELECT * FROM companies WHERE COMPANY_NAME LIKE CONCAT(:NAME,'%')",
+                query = "SELECT * FROM companies WHERE COMPANY_NAME LIKE CONCAT('%',:NAME,'%')",
                 resultClass = Company.class
         ),
         @NamedNativeQuery(

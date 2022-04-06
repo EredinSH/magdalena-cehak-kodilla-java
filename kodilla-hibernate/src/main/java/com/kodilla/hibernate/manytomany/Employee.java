@@ -13,7 +13,11 @@ import java.util.List;
         ),
         @NamedQuery(
                 name = "Employee.proposedLastname",
-                query = "FROM Employee Where lastname = :LASTNAME"
+                query = "FROM Employee WHERE lastname = :LASTNAME"
+        ),
+        @NamedQuery(
+                name = "Employee.fragment",
+                query = "FROM Employee WHERE lastname LIKE CONCAT('%',:LASTNAME,'%')"
         )
 })
 

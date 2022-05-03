@@ -39,7 +39,7 @@ public class StoredProcTestSuite {
     public void testUpdateBestsellers() throws SQLException {
         //GIVEN
         DbManager dbManager = DbManager.getInstance();
-        String sqlUpdate = "UPDATE BOOKS SET BESTSELLER=-1";
+        String sqlUpdate = "UPDATE BOOKS SET BESTSELLER=2";
         Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
 
@@ -49,7 +49,7 @@ public class StoredProcTestSuite {
         statement2.execute(sqlProcedureCall);
 
         //THEN
-        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=-1";
+        String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=2";
         ResultSet rs = statement.executeQuery(sqlCheckTable);
         int howMany = -1;
         if (rs.next()) {

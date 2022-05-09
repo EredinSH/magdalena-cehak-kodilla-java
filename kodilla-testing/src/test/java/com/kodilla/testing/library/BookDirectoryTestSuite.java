@@ -1,8 +1,10 @@
 package com.kodilla.testing.library;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class BookDirectoryTestSuite {
+
+    @Mock
+    private LibraryDatabase libraryDatabaseMock;
 
     @Test                                                                               // [1]
     void testListBooksWithConditionsReturnList() {                                      // [2]

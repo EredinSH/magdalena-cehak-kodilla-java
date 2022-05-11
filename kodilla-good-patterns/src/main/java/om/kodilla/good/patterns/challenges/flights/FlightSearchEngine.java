@@ -19,8 +19,7 @@ public class FlightSearchEngine {
         System.out.println("--------------------------------------");
 
         System.out.println("Szukamy lotów przez:");
-        List<Flight> flightBy = timetable.getFlightsBy("New York","Bangkok");
-        timetable.showFlight(flightBy);
+        timetable.getFlightsBy("New York","Warszawa","Bangkok");
         System.out.println("--------------------------------------");
 
     }

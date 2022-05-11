@@ -34,10 +34,18 @@ public final class Timetable {
                 .collect(Collectors.toList());
     }
 
-    public List<Flight> getFlightsBy(String start, String end) {
-        return flightsList.stream()
-                .filter(f -> f.getFlightFrom().equals(start) || f.getFlightTo().equals(end))
+    public void getFlightsBy(String start,String sharedCity, String end) {
+        List<Flight> resultList = flightsList.stream()
+                .filter(f -> f.getFlightFrom().equals(start) && f.getFlightTo().equals(sharedCity))
                 .collect(Collectors.toList());
+        flightsList.stream()
+                .filter(f -> f.getFlightTo().equals(end) && f.getFlightFrom().equals(sharedCity))
+                .collect(Collectors.toCollection(() -> resultList));
+        if(resultList.size() == 0) {
+            System.out.println("Nie ma takiego lotu");
+        } else {
+            resultList.stream().forEach(System.out::println);
+        }
     }
 
     public void showFlight(List<Flight> list){

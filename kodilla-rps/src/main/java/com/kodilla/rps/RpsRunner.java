@@ -27,18 +27,18 @@ public class RpsRunner {
 
         if (numberOfRounds > 0) {
             while (!end) {
-                if (scanner.hasNextInt() && !scanner.next().equals("n") && !scanner.next().equals("x")) {
+                if (scanner.hasNextInt()) {
                     game.playerMove();
                     game.computerMove();
                     game.getWinner();
                     numberOfRounds--;
-                } else if (scanner.hasNextInt() && scanner.next().equals("x")) {
+                } else if (scanner.next().equals("x")) {
                     System.out.println("Are you sure you want end the game? Yes or No?");
                     String answer = scanner.nextLine();
                     if (answer == "yes") {
                         end = true;
                     }
-                } else if (scanner.hasNextInt() && scanner.next().equals("n")) {
+                } else if (scanner.next().equals("n")) {
                     System.out.println("Are you sure you want start from the beginning? Yes or No?");
                     String answer = scanner.nextLine();
                     if (answer == "yes") {

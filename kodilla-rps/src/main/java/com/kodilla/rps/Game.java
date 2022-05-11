@@ -7,14 +7,16 @@ public class Game {
 
     private int playerMove;
     private int computerMove;
+    private int computerCounter = 0;
+    private int playerCounter = 0;
 
     public void computerMove() {
         Random random = new Random();
         int number = random.nextInt(4);
         computerMove = number;
-        if(computerMove == 1){
+        if (computerMove == 1) {
             System.out.println("Computer move: ROCK");
-        } else if (computerMove == 2){
+        } else if (computerMove == 2) {
             System.out.println("Computer move: PAPER");
         } else if (computerMove == 3) {
             System.out.println("Computer move: SCISSORS");
@@ -26,9 +28,9 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your move: ");
         playerMove = scanner.nextInt();
-        if(playerMove == 1){
+        if (playerMove == 1) {
             System.out.println("Your move: ROCK");
-        } else if (playerMove == 2){
+        } else if (playerMove == 2) {
             System.out.println("Your move: PAPER");
         } else if (playerMove == 3) {
             System.out.println("Your move: SCISSORS");
@@ -39,7 +41,7 @@ public class Game {
 
     public String getWinner() {
         String result = null;
-        if(playerMove == computerMove) {
+        if (playerMove == computerMove) {
             result = "REMIS!";
         } else if (playerMove == 1 && computerMove == 2) {
             result = "COMPUTER WIN!";
@@ -58,17 +60,15 @@ public class Game {
     }
 
     public String getWinnerOfTheDuels() {
-        int computerCounter = 0;
-        int playerCounter = 0;
-            if(getWinner().equals("PLAYER WIN!")) {
-                playerCounter++;
-            } else if (getWinner().equals("COMPUTER WIN!")) {
-                computerCounter++;
-            }
+        if (getWinner().equals("PLAYER WIN!")) {
+            playerCounter++;
+        } else if (getWinner().equals("COMPUTER WIN!")) {
+            computerCounter++;
+        }
 
         String winner;
 
-        if(computerCounter > playerCounter) {
+        if (computerCounter > playerCounter) {
             winner = "COMPUTER WON THE DUEL";
         } else {
             winner = "PLAYER WON THE DUEL";
